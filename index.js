@@ -127,11 +127,11 @@ function _getRequestFunction (self, url) {
       debug('Request sent - Server responded with:', statusCode, body)
 
       if ((error || self.httpSuccessCodes.indexOf(statusCode) === -1)) {
-        self.emitter.emit(shortname + '.failure', url, shortname, statusCode, body)
+        self.emitter.emit(shortname + '.failure', shortname, statusCode, body, url)
         return debug('HTTP failed: ' + error)
       }
 
-      self.emitter.emit(shortname + '.success', url, shortname, statusCode, body)
+      self.emitter.emit(shortname + '.success', shortname, statusCode, body, url)
     }
       )
   }
